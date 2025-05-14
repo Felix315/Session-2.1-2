@@ -3,32 +3,56 @@ import random
 class Point:
     def __init__(self, x, y):
         """
-        Initialze a Point object
-        :param x: the x position on the axis
-        :param y: the y position on the axis
+        Initialize a Point object.
+
+        :param x: The x-coordinate of the point.
+        :param y: The y-coordinate of the point.
         """
         self.x = x
         self.y = y
 
     def __str__(self):
         """
-        Magic method that is called when we try to print an instance
-        :return: <x, y>
+        Return a string representation of the point for printing.
+
+        :return: A string in the format 'point(x, y)'.
         """
         return f"point({self.x}, {self.y})"
 
     def __repr__(self):
+        """
+        Return the official string representation of the point.
+
+        :return: Same as __str__ output.
+        """
         return self.__str__() # use the same way of printing as str
 
     def distance_orig(self):
+        """
+        Calculate the distance from the origin (0,0) to this point.
+
+        :return: The Euclidean distance from the origin.
+        """
         return (self.x**2 + self.y**2)**0.5 # square root of the sum of x and y squared
 
-    def __gt__(self,other):
+    def __gt__(self, other):
+        """
+        Compare two points based on their distance from the origin.
+
+        :param other: Another Point object.
+        :return: True if this point is further from the origin than the other.
+        """
         my_distance = self.distance_orig()
         other_distance = other.distance_orig()
         return my_distance > other_distance
 
-    def __eq__(self,other):
+    def __eq__(self, other):
+        """
+        Check if two points are at the same distance from the origin.
+
+        :param other: Another Point object.
+        :return: True if both points are equally distant from the origin.
+        """
         my_distance = self.distance_orig()
         other_distance = other.distance_orig()
         return my_distance == other_distance
